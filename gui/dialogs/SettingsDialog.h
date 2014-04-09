@@ -81,6 +81,8 @@ slots:
 	void on_jvisualvmCheckBtn_clicked();
 	void on_mceditPathBtn_clicked();
 	void on_mceditCheckBtn_clicked();
+	void on_amidstPathBtn_clicked();
+	void on_amidstCheckBtn_clicked();
 
 	/*!
 	 * Updates the list of update channels in the combo box.

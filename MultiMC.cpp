@@ -36,6 +36,7 @@
 #include "logic/tools/JProfiler.h"
 #include "logic/tools/JVisualVM.h"
 #include "logic/tools/MCEditTool.h"
+#include "logic/tools/AMIDST.h"
 
 #include "pathutils.h"
 #include "cmdutils.h"
@@ -231,6 +232,8 @@ MultiMC::MultiMC(int &argc, char **argv, bool root_override)
 	}
 	m_tools.insert("mcedit",
 				   std::shared_ptr<BaseDetachedToolFactory>(new MCEditFactory()));
+	m_tools.insert("amidst",
+				   std::shared_ptr<BaseDetachedToolFactory>(new AMIDSTFactory()));
 	for (auto tool : m_tools.values())
 	{
 		tool->registerSettings(m_settings.get());

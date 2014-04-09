@@ -539,6 +539,8 @@ logic/tools/JProfiler.h
 logic/tools/JProfiler.cpp
 logic/tools/JVisualVM.h
 logic/tools/JVisualVM.cpp
+logic/tools/AMIDST.h
+logic/tools/AMIDST.cpp
 )
 
 
