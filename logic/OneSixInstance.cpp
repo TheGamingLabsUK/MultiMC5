@@ -315,7 +315,7 @@ bool OneSixInstance::shouldUpdate() const
 bool OneSixInstance::versionIsCustom()
 {
 	QDir patches(PathCombine(instanceRoot(), "patches/"));
-	return (patches.exists() && patches.count() >= 0)
+	return (patches.exists() && patches.count() > 0)
 			|| QFile::exists(PathCombine(instanceRoot(), "custom.json"))
 			|| QFile::exists(PathCombine(instanceRoot(), "user.json"));
 }
