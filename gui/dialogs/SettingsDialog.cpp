@@ -277,6 +277,8 @@ void SettingsDialog::refreshUpdateChannelList()
 
 void SettingsDialog::updateChannelSelectionChanged(int index)
 {
+	Q_UNUSED(index);
+
 	refreshUpdateChannelDesc();
 }
 

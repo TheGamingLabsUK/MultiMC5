@@ -668,6 +668,8 @@ void MainWindow::updateStatusFailedUI()
 
 void MainWindow::updateAvailable(QString repo, QString versionName, int versionId)
 {
+	Q_UNUSED(versionName);
+
 	UpdateDialog dlg;
 	UpdateAction action = (UpdateAction)dlg.exec();
 	switch (action)
@@ -1490,6 +1492,8 @@ void MainWindow::on_actionInstanceSettings_triggered()
 
 void MainWindow::instanceChanged(const QModelIndex &current, const QModelIndex &previous)
 {
+	Q_UNUSED(previous);
+
     if(!current.isValid())
     {
         selectionBad();

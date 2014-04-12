@@ -177,6 +177,8 @@ QVariant MojangAccountList::data(const QModelIndex &index, int role) const
 
 QVariant MojangAccountList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:
@@ -209,12 +211,16 @@ QVariant MojangAccountList::headerData(int section, Qt::Orientation orientation,
 
 int MojangAccountList::rowCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	// Return count
 	return count();
 }
 
 int MojangAccountList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 2;
 }
 

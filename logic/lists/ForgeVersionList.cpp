@@ -50,6 +50,8 @@ int ForgeVersionList::count() const
 
 int ForgeVersionList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 3;
 }
 
@@ -92,6 +94,8 @@ QVariant ForgeVersionList::data(const QModelIndex &index, int role) const
 
 QVariant ForgeVersionList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:

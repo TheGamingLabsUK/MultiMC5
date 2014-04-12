@@ -50,6 +50,8 @@ int JavaVersionList::count() const
 
 int JavaVersionList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 3;
 }
 
@@ -93,6 +95,8 @@ QVariant JavaVersionList::data(const QModelIndex &index, int role) const
 
 QVariant JavaVersionList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:

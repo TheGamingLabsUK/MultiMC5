@@ -187,6 +187,10 @@ Qt::DropActions IconList::supportedDropActions() const
 bool IconList::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column,
 							const QModelIndex &parent)
 {
+	Q_UNUSED(row);
+	Q_UNUSED(column);
+	Q_UNUSED(parent);
+
 	if (action == Qt::IgnoreAction)
 		return true;
 	// check if the action is supported
@@ -245,6 +249,8 @@ QVariant IconList::data(const QModelIndex &index, int role) const
 
 int IconList::rowCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return icons.size();
 }
 

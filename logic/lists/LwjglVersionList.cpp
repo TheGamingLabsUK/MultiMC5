@@ -54,6 +54,9 @@ QVariant LWJGLVersionList::data(const QModelIndex &index, int role) const
 
 QVariant LWJGLVersionList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(section);
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:
@@ -69,6 +72,8 @@ QVariant LWJGLVersionList::headerData(int section, Qt::Orientation orientation, 
 
 int LWJGLVersionList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 1;
 }
 

@@ -169,7 +169,8 @@ void OneSixModEditDialog::on_moveLibraryUpBtn_clicked()
 	try
 	{
 		const int row = ui->libraryTreeView->selectionModel()->selectedRows().first().row();
-		const int newRow = 0;m_version->move(row, VersionFinal::MoveUp);
+		m_version->move(row, VersionFinal::MoveUp);
+		//const int newRow = 0;
 		//ui->libraryTreeView->selectionModel()->setCurrentIndex(m_version->index(newRow), QItemSelectionModel::ClearAndSelect);
 	}
 	catch (MMCError &e)
@@ -187,7 +188,8 @@ void OneSixModEditDialog::on_moveLibraryDownBtn_clicked()
 	try
 	{
 		const int row = ui->libraryTreeView->selectionModel()->selectedRows().first().row();
-		const int newRow = 0;m_version->move(row, VersionFinal::MoveDown);
+		m_version->move(row, VersionFinal::MoveDown);
+		//const int newRow = 0;
 		//ui->libraryTreeView->selectionModel()->setCurrentIndex(m_version->index(newRow), QItemSelectionModel::ClearAndSelect);
 	}
 	catch (MMCError &e)
@@ -375,6 +377,8 @@ void OneSixModEditDialog::on_viewResPackBtn_clicked()
 
 void OneSixModEditDialog::loaderCurrent(QModelIndex current, QModelIndex previous)
 {
+	Q_UNUSED(previous);
+
 	if (!current.isValid())
 	{
 		ui->frame->clear();
@@ -388,6 +392,8 @@ void OneSixModEditDialog::loaderCurrent(QModelIndex current, QModelIndex previou
 void OneSixModEditDialog::versionCurrent(const QModelIndex &current,
 										 const QModelIndex &previous)
 {
+	Q_UNUSED(previous);
+
 	if (!current.isValid())
 	{
 		ui->removeLibraryBtn->setDisabled(true);

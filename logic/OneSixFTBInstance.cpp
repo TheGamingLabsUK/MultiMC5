@@ -125,8 +125,11 @@ QString OneSixFTBInstance::getStatusbarDescription()
 	}
 	return "OneSix FTB: " + intendedVersionId();
 }
+
 bool OneSixFTBInstance::menuActionEnabled(QString action_name) const
 {
+	Q_UNUSED(action_name);
+
 	return false;
 }
 

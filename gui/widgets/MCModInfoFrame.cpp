@@ -107,5 +107,7 @@ void MCModInfoFrame::setModDescription(QString text)
 }
 void MCModInfoFrame::modDescEllipsisHandler(const QString &link)
 {
+	Q_UNUSED(link);
+
 	CustomMessageBox::selectable(this, tr(""), desc)->show();
 }

@@ -54,15 +54,27 @@ void GroupView::setModel(QAbstractItemModel *model)
 void GroupView::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight,
 							const QVector<int> &roles)
 {
+	Q_UNUSED(topLeft);
+	Q_UNUSED(bottomRight);
+	Q_UNUSED(roles);
+
 	scheduleDelayedItemsLayout();
 }
 void GroupView::rowsInserted(const QModelIndex &parent, int start, int end)
 {
+	Q_UNUSED(parent);
+	Q_UNUSED(start);
+	Q_UNUSED(end);
+
 	scheduleDelayedItemsLayout();
 }
 
 void GroupView::rowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
 {
+	Q_UNUSED(parent);
+	Q_UNUSED(start);
+	Q_UNUSED(end);
+
 	scheduleDelayedItemsLayout();
 }
 
@@ -441,6 +453,8 @@ void GroupView::mouseDoubleClickEvent(QMouseEvent *event)
 
 void GroupView::paintEvent(QPaintEvent *event)
 {
+	Q_UNUSED(event);
+
 	executeDelayedItemsLayout();
 
 	QPainter painter(this->viewport());
@@ -528,6 +542,8 @@ void GroupView::paintEvent(QPaintEvent *event)
 
 void GroupView::resizeEvent(QResizeEvent *event)
 {
+	Q_UNUSED(event);
+
 	// QListView::resizeEvent(event);
 
 	//	if (m_categoryEditor)
@@ -564,6 +580,8 @@ void GroupView::dragMoveEvent(QDragMoveEvent *event)
 
 void GroupView::dragLeaveEvent(QDragLeaveEvent *event)
 {
+	Q_UNUSED(event);
+
 	m_lastDragPosition = QPoint();
 	viewport()->update();
 }
@@ -915,6 +933,9 @@ QRegion GroupView::visualRegionForSelection(const QItemSelection &selection) con
 QModelIndex GroupView::moveCursor(QAbstractItemView::CursorAction cursorAction,
 								  Qt::KeyboardModifiers modifiers)
 {
+	Q_UNUSED(cursorAction);
+	Q_UNUSED(modifiers);
+
 	auto current = currentIndex();
 	if(!current.isValid())
 	{

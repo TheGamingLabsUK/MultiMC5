@@ -269,6 +269,7 @@ void ConsoleWindow::onEnded(BaseInstance *instance, int code, QProcess::ExitStat
 
 void ConsoleWindow::onLaunchFailed(BaseInstance *instance)
 {
+	Q_UNUSED(instance);
 	ui->btnKillMinecraft->setEnabled(false);
 
 	setMayClose(true);

@@ -57,6 +57,8 @@ void InstanceLauncher::onLoginComplete()
 
 void InstanceLauncher::doLogin(const QString &errorMsg)
 {
+	Q_UNUSED(errorMsg);
+
 	// FIXME: Use new account system here...
 	/*
 	LoginDialog *loginDlg = new LoginDialog(nullptr, errorMsg);

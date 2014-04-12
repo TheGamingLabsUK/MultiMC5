@@ -26,6 +26,8 @@ void JProfiler::beginProfilingImpl(MinecraftProcess *process)
 			static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
 			[this](int exit, QProcess::ExitStatus status)
 	{
+		Q_UNUSED(exit);
+
 		if (status == QProcess::CrashExit)
 		{
 			emit abortLaunch(tr("Profiler aborted"));

@@ -170,6 +170,8 @@ bool ModList::update()
 
 void ModList::directoryChanged(QString path)
 {
+	Q_UNUSED(path);
+
 	update();
 }
 
@@ -393,6 +395,8 @@ bool ModList::moveModsDown(int first, int last)
 
 int ModList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 3;
 }
 
@@ -439,6 +443,8 @@ QVariant ModList::data(const QModelIndex &index, int role) const
 
 bool ModList::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+	Q_UNUSED(value);
+
 	if (index.row() < 0 || index.row() >= rowCount(index) || !index.isValid())
 	{
 		return false;
@@ -458,6 +464,8 @@ bool ModList::setData(const QModelIndex &index, const QVariant &value, int role)
 
 QVariant ModList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:

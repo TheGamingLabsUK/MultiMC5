@@ -484,6 +484,8 @@ void InstanceList::clear()
 
 void InstanceList::on_InstFolderChanged(const Setting &setting, QVariant value)
 {
+	Q_UNUSED(setting);
+
 	m_instDir = value.toString();
 	loadList();
 }

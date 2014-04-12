@@ -76,6 +76,8 @@ QVariant BaseVersionList::data(const QModelIndex &index, int role) const
 
 QVariant BaseVersionList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(orientation);
+
 	switch (role)
 	{
 	case Qt::DisplayRole:
@@ -111,11 +113,15 @@ QVariant BaseVersionList::headerData(int section, Qt::Orientation orientation, i
 
 int BaseVersionList::rowCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	// Return count
 	return count();
 }
 
 int BaseVersionList::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 2;
 }

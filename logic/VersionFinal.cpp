@@ -221,11 +221,15 @@ Qt::ItemFlags VersionFinal::flags(const QModelIndex &index) const
 
 int VersionFinal::rowCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return versionFiles.size();
 }
 
 int VersionFinal::columnCount(const QModelIndex &parent) const
 {
+	Q_UNUSED(parent);
+
 	return 2;
 }
 

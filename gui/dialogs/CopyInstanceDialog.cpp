@@ -80,5 +80,7 @@ void CopyInstanceDialog::on_iconButton_clicked()
 
 void CopyInstanceDialog::on_instNameTextBox_textChanged(const QString &arg1)
 {
+	Q_UNUSED(arg1);
+
 	updateDialogState();
 }

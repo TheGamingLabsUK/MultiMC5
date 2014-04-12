@@ -20,7 +20,10 @@ MinecraftForge::MinecraftForge(const QString &file) : Mod(file)
 }
 
 bool MinecraftForge::FixVersionIfNeeded(QString newVersion)
-{/*
+{
+	Q_UNUSED(newVersion);
+
+	/*
 	wxString reportedVersion = GetModVersion();
 	if(reportedVersion == "..." || reportedVersion.empty())
 	{

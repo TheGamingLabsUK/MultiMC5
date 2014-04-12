@@ -56,6 +56,9 @@ public:
 	 */
 	virtual void scrollTo(const QModelIndex &index, ScrollHint hint = EnsureVisible) override
 	{
+		Q_UNUSED(index);
+		Q_UNUSED(hint);
+
 		return;
 	}
 

@@ -85,6 +85,8 @@ void ProgressDialog::onTaskStarted()
 
 void ProgressDialog::onTaskFailed(QString failure)
 {
+	Q_UNUSED(failure);
+
 	reject();
 }
 

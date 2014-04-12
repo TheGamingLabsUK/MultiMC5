@@ -40,6 +40,8 @@ QJsonObject ValidateTask::getRequestContent() const
 
 bool ValidateTask::processResponse(QJsonObject responseData)
 {
+	Q_UNUSED(responseData);
+
 	// Assume that if processError wasn't called, then the request was successful.
 	emitSucceeded();
 	return true;

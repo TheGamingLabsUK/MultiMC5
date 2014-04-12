@@ -16,6 +16,8 @@ QString LegacyFTBInstance::getStatusbarDescription()
 
 bool LegacyFTBInstance::menuActionEnabled(QString action_name) const
 {
+	Q_UNUSED(action_name);
+
 	return false;
 }
 

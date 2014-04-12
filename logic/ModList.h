@@ -48,6 +48,8 @@ public:
 
 	virtual int rowCount(const QModelIndex &parent = QModelIndex()) const
 	{
+		Q_UNUSED(parent);
+
 		return size();
 	}
 	;

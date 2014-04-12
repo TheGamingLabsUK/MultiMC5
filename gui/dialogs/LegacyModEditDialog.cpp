@@ -358,6 +358,8 @@ void LegacyModEditDialog::on_buttonBox_rejected()
 
 void LegacyModEditDialog::jarCurrent(QModelIndex current, QModelIndex previous)
 {
+	Q_UNUSED(previous);
+
 	if (!current.isValid())
 	{
 		ui->jarMIFrame->clear();
@@ -370,6 +372,8 @@ void LegacyModEditDialog::jarCurrent(QModelIndex current, QModelIndex previous)
 
 void LegacyModEditDialog::coreCurrent(QModelIndex current, QModelIndex previous)
 {
+	Q_UNUSED(previous);
+
 	if (!current.isValid())
 	{
 		ui->coreMIFrame->clear();
@@ -382,6 +386,8 @@ void LegacyModEditDialog::coreCurrent(QModelIndex current, QModelIndex previous)
 
 void LegacyModEditDialog::loaderCurrent(QModelIndex current, QModelIndex previous)
 {
+	Q_UNUSED(previous);
+
 	if (!current.isValid())
 	{
 		ui->loaderMIFrame->clear();

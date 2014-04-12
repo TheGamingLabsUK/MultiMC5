@@ -105,6 +105,8 @@ void MD5EtagDownload::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 
 void MD5EtagDownload::downloadError(QNetworkReply::NetworkError error)
 {
+	Q_UNUSED(error);
+
 	// error happened during download.
 	// TODO: log the reason why
 	m_status = Job_Failed;

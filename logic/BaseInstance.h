@@ -51,10 +51,10 @@ protected:
 
 public:
 	/// virtual destructor to make sure the destruction is COMPLETE
-	virtual ~BaseInstance() {};
+	virtual ~BaseInstance() {}
 
 	virtual void init() {}
-	virtual void copy(const QDir &newDir) {}
+	virtual void copy(const QDir &newDir) {Q_UNUSED(newDir);}
 
 	/// nuke thoroughly - deletes the instance contents, notifies the list/model which is
 	/// responsible of cleaning up the husk

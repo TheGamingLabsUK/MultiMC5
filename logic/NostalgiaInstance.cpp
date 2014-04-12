@@ -32,5 +32,7 @@ QString NostalgiaInstance::getStatusbarDescription()
 
 bool NostalgiaInstance::menuActionEnabled(QString action_name) const
 {
+	Q_UNUSED(action_name);
+
 	return false;
 }

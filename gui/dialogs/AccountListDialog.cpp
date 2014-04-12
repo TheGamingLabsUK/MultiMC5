@@ -48,7 +48,7 @@ AccountListDialog::AccountListDialog(QWidget *parent)
 	QItemSelectionModel* selectionModel = ui->listView->selectionModel();
 
 	connect(selectionModel, &QItemSelectionModel::selectionChanged, 
-			[this] (const QItemSelection& sel, const QItemSelection& dsel) { updateButtonStates(); });
+			[this] (const QItemSelection& sel, const QItemSelection& dsel) { Q_UNUSED(sel); Q_UNUSED(dsel); updateButtonStates(); });
 
 	connect(m_accounts.get(), SIGNAL(listChanged()), SLOT(listChanged()));
 	connect(m_accounts.get(), SIGNAL(activeAccountChanged()), SLOT(listChanged()));

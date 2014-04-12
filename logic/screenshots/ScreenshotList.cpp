@@ -39,11 +39,17 @@ QVariant ScreenshotList::data(const QModelIndex &index, int role) const
 
 QVariant ScreenshotList::headerData(int section, Qt::Orientation orientation, int role) const
 {
+	Q_UNUSED(section);
+	Q_UNUSED(orientation);
+	Q_UNUSED(role);
+
 	return QVariant();
 }
 
 Qt::ItemFlags ScreenshotList::flags(const QModelIndex &index) const
 {
+	Q_UNUSED(index);
+
 	return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
 }
 

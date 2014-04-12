@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#define Q_UNUSED(x) (void)x
+
 template <class T>
 class TestList
 {
@@ -45,6 +47,8 @@ class TestUtils
 		template <typename T>
 		static std::string toString(T value, const char* context)
 		{
+			Q_UNUSED(value);
+
 			return "Unprintable: " + std::string(context);
 		}
 

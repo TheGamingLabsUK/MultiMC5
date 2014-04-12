@@ -44,6 +44,8 @@ void ImgurAlbumCreation::start()
 }
 void ImgurAlbumCreation::downloadError(QNetworkReply::NetworkError error)
 {
+	Q_UNUSED(error);
+
 	QLOG_DEBUG() << m_reply->errorString();
 	m_status = Job_Failed;
 }
