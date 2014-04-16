@@ -124,6 +124,21 @@ void AccountListDialog::addAccount(const QString& errMsg)
 		QString username(loginDialog.username());
 		QString password(loginDialog.password());
 
+		// Sanity Checks
+		QString failReason;
+		if (username.isEmpty())
+			failReason = "The Email/Username cannot be empty!";
+		else if (password.isEmpty())
+			failReason = "The Password cannot be empty!";
+		if (!failReason.isNull())
+		{
+			auto dlg = CustomMessageBox::selectable(this, tr("Login error."), failReason, QMessageBox::Critical);
+			dlg->exec();
+			delete dlg;
+			return;
+		}
+
+		// Log in
 		MojangAccountPtr account = MojangAccount::createFromUsername(username);
 		ProgressDialog progDialog(this);
 		auto task = account->login(nullptr, password);
