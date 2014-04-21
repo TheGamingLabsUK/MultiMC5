@@ -252,8 +252,7 @@ MinecraftProcess *OneSixInstance::prepareForLaunch(AuthSessionPtr session)
 void OneSixInstance::cleanupAfterRun()
 {
 	QString target_dir = PathCombine(instanceRoot(), "natives/");
-	QDir dir(target_dir);
-	dir.removeRecursively();
+	removeAllSafely(target_dir);
 }
 
 std::shared_ptr<ModList> OneSixInstance::loaderModList()

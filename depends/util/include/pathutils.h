@@ -16,6 +16,7 @@
 #pragma once
 
 #include <QString>
+#include <QDir>
 
 #include "libutil_config.h"
 
@@ -54,6 +55,12 @@ LIBUTIL_EXPORT bool copyPath(QString src, QString dst);
 
 /// Opens the given file in the default application.
 LIBUTIL_EXPORT void openFileInDefaultProgram(QString filename);
+
+/// Recursively removes a folder or removes a file, not following symlinks.
+LIBUTIL_EXPORT bool removeAllSafely(QString fullpath);
+
+/// Recursively removes a folder, not following symlinks.
+LIBUTIL_EXPORT bool removeDirSafely(QDir what);
 
 /// Opens the given directory in the default application.
 LIBUTIL_EXPORT void openDirInDefaultProgram(QString dirpath, bool ensureExists = false);

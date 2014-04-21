@@ -95,7 +95,7 @@ void BaseInstance::iconUpdated(QString key)
 
 void BaseInstance::nuke()
 {
-	QDir(instanceRoot()).removeRecursively();
+	removeAllSafely(instanceRoot());
 	emit nuked(this);
 }
 

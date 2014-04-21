@@ -296,8 +296,7 @@ bool Mod::destroy()
 {
 	if (m_type == MOD_FOLDER)
 	{
-		QDir d(m_file.filePath());
-		if (d.removeRecursively())
+		if (removeAllSafely(m_file.filePath()))
 		{
 			m_type = MOD_UNKNOWN;
 			return true;

@@ -20,10 +20,11 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QDebug>
+#include <QDirIterator>
 
 QString PathCombine(QString path1, QString path2)
 {
-    return QDir::cleanPath(path1 + QDir::separator() + path2);
+	return QDir::cleanPath(path1 + QDir::separator() + path2);
 }
 
 QString PathCombine(QString path1, QString path2, QString path3)
@@ -128,6 +129,46 @@ bool copyPath(QString src, QString dst)
 		QFile::copy(src + QDir::separator() + f, dst + QDir::separator() + f);
 	}
 	return true;
+}
+
+bool removeDirSafely(QDir what)
+{
+	bool success = true;
+	const QString dirPath = what.path();
+	// not empty -- we must empty it first
+	QDirIterator di(dirPath, QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
+	while (di.hasNext())
+	{
+		di.next();
+		const QFileInfo& fi = di.fileInfo();
+		bool ok;
+		// TODO: also detect windows reparse points (and possibly hardlinks)
+		if (fi.isDir() && !fi.isSymLink())
+			ok = removeDirSafely(QDir(di.filePath())); // recursive
+		else
+			ok = QFile::remove(di.filePath());
+		if (!ok)
+			success = false;
+	}
+
+	if (success)
+		success = what.rmdir(what.absolutePath());
+
+	return success;
+}
+
+bool removeAllSafely(QString fullpath)
+{
+	QFileInfo finfo(fullpath);
+	// TODO: also detect windows reparse points (and possibly hardlinks)
+	if(finfo.isDir() && !finfo.isSymLink())
+	{
+		return removeDirSafely(QDir(finfo.filePath()));
+	}
+	else
+	{
+		return QFile::remove(finfo.filePath());
+	}
 }
 
 void openDirInDefaultProgram(QString path, bool ensureExists)

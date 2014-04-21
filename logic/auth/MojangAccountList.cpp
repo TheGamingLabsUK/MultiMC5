@@ -355,8 +355,7 @@ bool MojangAccountList::saveList(const QString &filePath)
 	QFileInfo finfo(path);
 	if(finfo.isDir())
 	{
-		QDir badDir(path);
-		badDir.removeRecursively();
+		removeAllSafely(path);
 	}
 
 	QLOG_INFO() << "Writing account list to" << path;

@@ -165,12 +165,10 @@ InstanceFactory::InstCreateError InstanceFactory::copyInstance(InstancePtr &newI
 															   InstancePtr &oldInstance,
 															   const QString &instDir)
 {
-	QDir rootDir(instDir);
-
 	QLOG_DEBUG() << instDir.toUtf8();
 	if (!copyPath(oldInstance->instanceRoot(), instDir))
 	{
-		rootDir.removeRecursively();
+		removeAllSafely(instDir);
 		return InstanceFactory::CantCreateDir;
 	}
 
@@ -192,11 +190,11 @@ InstanceFactory::InstCreateError InstanceFactory::copyInstance(InstancePtr &newI
 	case NoLoadError:
 		return NoCreateError;
 	case NotAnInstance:
-		rootDir.removeRecursively();
+		removeAllSafely(instDir);
 		return CantCreateDir;
 	default:
 	case UnknownLoadError:
-		rootDir.removeRecursively();
+		removeAllSafely(instDir);
 		return UnknownCreateError;
 	}
 }

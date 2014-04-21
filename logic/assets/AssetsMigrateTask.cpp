@@ -6,6 +6,7 @@
 #include <QDirIterator>
 #include <QCryptographicHash>
 #include "gui/dialogs/CustomMessageBox.h"
+#include <pathutils.h>
 #include <QDesktopServices>
 
 AssetsMigrateTask::AssetsMigrateTask(int expected, QObject *parent)
@@ -122,11 +123,8 @@ void AssetsMigrateTask::executeTask()
 			if (cleanup_iterator.fileInfo().isDir() && !ignore)
 			{
 				QString path = cleanup_iterator.filePath();
-				QDir folder(path);
-
 				QLOG_DEBUG() << "Cleaning up legacy assets folder:" << path;
-
-				folder.removeRecursively();
+				removeAllSafely(path);
 			}
 		}
 	}
