@@ -21,16 +21,16 @@
 class EnabledItemFilter;
 namespace Ui
 {
-class OneSixModEditDialog;
+class InstanceEditDialog;
 }
 
-class OneSixModEditDialog : public QDialog
+class InstanceEditDialog : public QDialog
 {
 	Q_OBJECT
 
 public:
-	explicit OneSixModEditDialog(OneSixInstance *inst, QWidget *parent = 0);
-	virtual ~OneSixModEditDialog();
+	explicit InstanceEditDialog(OneSixInstance *inst, QWidget *parent = 0);
+	virtual ~InstanceEditDialog();
 
 private
 slots:
@@ -38,11 +38,18 @@ slots:
 	void on_rmModBtn_clicked();
 	void on_viewModBtn_clicked();
 
+	void on_addCoreBtn_clicked();
+	void on_rmCoreBtn_clicked();
+	void on_viewCoreBtn_clicked();
+
 	void on_addResPackBtn_clicked();
 	void on_rmResPackBtn_clicked();
 	void on_viewResPackBtn_clicked();
+
+	
 	// Questionable: SettingsDialog doesn't need this for some reason?
 	void on_buttonBox_rejected();
+
 	void on_forgeBtn_clicked();
 	void on_liteloaderBtn_clicked();
 	void on_reloadLibrariesBtn_clicked();
@@ -53,17 +60,20 @@ slots:
 	void updateVersionControls();
 	void disableVersionControls();
 
+	
 protected:
 	bool eventFilter(QObject *obj, QEvent *ev);
 	bool loaderListFilter(QKeyEvent *ev);
+	bool coreListFilter(QKeyEvent *ev);
 	bool resourcePackListFilter(QKeyEvent *ev);
 	/// FIXME: this shouldn't be necessary!
 	bool reloadInstanceVersion();
 
 private:
-	Ui::OneSixModEditDialog *ui;
+	Ui::InstanceEditDialog *ui;
 	std::shared_ptr<VersionFinal> m_version;
 	std::shared_ptr<ModList> m_mods;
+	std::shared_ptr<ModList> m_coremods;
 	std::shared_ptr<ModList> m_resourcepacks;
 	EnabledItemFilter *main_model;
 	OneSixInstance *m_inst;
@@ -72,4 +82,5 @@ public
 slots:
 	void loaderCurrent(QModelIndex current, QModelIndex previous);
 	void versionCurrent(const QModelIndex &current, const QModelIndex &previous);
+	void coreCurrent(QModelIndex current, QModelIndex previous);
 };

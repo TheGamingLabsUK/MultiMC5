@@ -26,7 +26,7 @@
 #include "MultiMC.h"
 #include "icons/IconList.h"
 #include "MinecraftProcess.h"
-#include "gui/dialogs/OneSixModEditDialog.h"
+#include "gui/dialogs/InstanceEditDialog.h"
 #include <MMCError.h>
 
 OneSixInstance::OneSixInstance(const QString &rootDir, SettingsObject *settings, QObject *parent)
@@ -267,6 +267,17 @@ std::shared_ptr<ModList> OneSixInstance::loaderModList()
 	return d->loader_mod_list;
 }
 
+std::shared_ptr<ModList> OneSixInstance::coreModList()
+{
+	I_D(OneSixInstance);
+	if (!d->core_mod_list)
+	{
+		d->core_mod_list.reset(new ModList(coreModsDir()));
+	}
+	d->core_mod_list->update();
+	return d->core_mod_list;
+}
+
 std::shared_ptr<ModList> OneSixInstance::resourcePackList()
 {
 	I_D(OneSixInstance);
@@ -280,7 +291,7 @@ std::shared_ptr<ModList> OneSixInstance::resourcePackList()
 
 QDialog *OneSixInstance::createModEditDialog(QWidget *parent)
 {
-	return new OneSixModEditDialog(this, parent);
+	return new InstanceEditDialog(this, parent);
 }
 
 bool OneSixInstance::setIntendedVersionId(QString version)
@@ -403,16 +414,24 @@ bool OneSixInstance::menuActionEnabled(QString action_name) const
 
 QString OneSixInstance::getStatusbarDescription()
 {
-	QString descr = "OneSix : " + intendedVersionId();
+	QStringList traits;
 	if (versionIsCustom())
 	{
-		descr += " (custom)";
+		traits.append(tr("custom"));
 	}
 	if (flags().contains(VersionBrokenFlag))
 	{
-		descr += " (broken)";
+		traits.append(tr("broken"));
 	}
-	return descr;
+	
+	if(traits.size())
+	{
+		return tr("Minecraft %1 (%2)").arg(intendedVersionId()).arg(traits.join(", "));
+	}
+	else
+	{
+		return tr("Minecraft %1").arg(intendedVersionId());
+	}
 }
 
 QDir OneSixInstance::librariesPath() const
@@ -454,6 +473,11 @@ bool OneSixInstance::reload()
 QString OneSixInstance::loaderModsDir() const
 {
 	return PathCombine(minecraftRoot(), "mods");
+}
+
+QString OneSixInstance::coreModsDir() const
+{
+	return PathCombine(minecraftRoot(), "coremods");
 }
 
 QString OneSixInstance::resourcePacksDir() const

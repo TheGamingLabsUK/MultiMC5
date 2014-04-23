@@ -32,11 +32,13 @@ public:
 
 	//////  Mod Lists  //////
 	std::shared_ptr<ModList> loaderModList();
+	std::shared_ptr<ModList> coreModList();
 	std::shared_ptr<ModList> resourcePackList();
 
 	////// Directories //////
 	QString resourcePacksDir() const;
 	QString loaderModsDir() const;
+	QString coreModsDir() const;
 	virtual QString instanceConfigFolder() const override;
 
 	virtual std::shared_ptr<Task> doUpdate() override;

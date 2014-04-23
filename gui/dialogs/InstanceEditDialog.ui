@@ -1,101 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LegacyModEditDialog</class>
- <widget class="QDialog" name="LegacyModEditDialog">
+ <class>InstanceEditDialog</class>
+ <widget class="QDialog" name="InstanceEditDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>420</height>
+    <width>593</width>
+    <height>568</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Edit Mods</string>
+   <string>Edit Instance</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="jarTab">
+     <widget class="QWidget" name="libTab">
       <attribute name="title">
-       <string>Jar Mods</string>
+       <string>Version</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QVBoxLayout" name="verticalLayout_10">
          <item>
-          <widget class="ModListView" name="jarModsTreeView">
+          <widget class="ModListView" name="libraryTreeView">
            <property name="verticalScrollBarPolicy">
             <enum>Qt::ScrollBarAlwaysOn</enum>
            </property>
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAlwaysOff</enum>
            </property>
+           <attribute name="headerVisible">
+            <bool>false</bool>
+           </attribute>
           </widget>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="jarModsButtonBox">
-           <item>
-            <widget class="QPushButton" name="addJarBtn">
-             <property name="text">
-              <string>&amp;Add</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="rmJarBtn">
-             <property name="text">
-              <string>&amp;Remove</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="addForgeBtn">
-             <property name="text">
-              <string>MCForge</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="jarModsButtonSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="moveJarUpBtn">
-             <property name="text">
-              <string>Move &amp;Up</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="moveJarDownBtn">
-             <property name="text">
-              <string>Move &amp;Down</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="MCModInfoFrame" name="jarMIFrame">
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QPushButton" name="jarmodBtn_2">
+           <property name="text">
+            <string>Change version</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="forgeBtn">
+           <property name="toolTip">
+            <string>Replace any current custom version with Minecraft Forge</string>
+           </property>
+           <property name="text">
+            <string>Install Forge</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="liteloaderBtn">
+           <property name="text">
+            <string>Install LiteLoader</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="jarmodBtn">
+           <property name="text">
+            <string>Add jar mod</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reloadLibrariesBtn">
+           <property name="text">
+            <string>Reload</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeLibraryBtn">
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveLibraryUpBtn">
+           <property name="toolTip">
+            <string>This isn't implemented yet.</string>
+           </property>
+           <property name="text">
+            <string>Move up</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveLibraryDownBtn">
+           <property name="toolTip">
+            <string>This isn't implemented yet.</string>
+           </property>
+           <property name="text">
+            <string>Move down</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="resetLibraryOrderBtn">
+           <property name="toolTip">
+            <string>This isn't implemented yet.</string>
+           </property>
+           <property name="text">
+            <string>Reset order</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -169,21 +228,31 @@
       <attribute name="title">
        <string>Loader Mods</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="ModListView" name="loaderModTreeView">
-           <property name="acceptDrops">
-            <bool>true</bool>
-           </property>
-           <property name="dragDropMode">
-            <enum>QAbstractItemView::DropOnly</enum>
-           </property>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="ModListView" name="loaderModTreeView">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="acceptDrops">
+              <bool>true</bool>
+             </property>
+             <property name="dragDropMode">
+              <enum>QAbstractItemView::DropOnly</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="mlModsButtonBox">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
             <widget class="QPushButton" name="addModBtn">
              <property name="text">
@@ -199,7 +268,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="mlModsButtonSpacer">
+            <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
@@ -223,27 +292,24 @@
         </layout>
        </item>
        <item>
-        <widget class="MCModInfoFrame" name="loaderMIFrame">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+        <widget class="MCModInfoFrame" name="frame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="texPackTab">
-      <property name="acceptDrops">
-       <bool>false</bool>
-      </property>
+     <widget class="QWidget" name="resPackTab">
       <attribute name="title">
-       <string>Texture Packs</string>
+       <string>Resource Packs</string>
       </attribute>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="ModListView" name="texPackTreeView">
+        <widget class="ModListView" name="resPackTreeView">
          <property name="acceptDrops">
           <bool>true</bool>
          </property>
@@ -253,23 +319,23 @@
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="texturePacksButtonBox">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QPushButton" name="addTexPackBtn">
+          <widget class="QPushButton" name="addResPackBtn">
            <property name="text">
             <string>&amp;Add</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="rmTexPackBtn">
+          <widget class="QPushButton" name="rmResPackBtn">
            <property name="text">
             <string>&amp;Remove</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="texturePacksButtonSpacer">
+          <spacer name="verticalSpacer_2">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
@@ -282,7 +348,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="viewTexPackBtn">
+          <widget class="QPushButton" name="viewResPackBtn">
            <property name="text">
             <string>&amp;View Folder</string>
            </property>
@@ -294,8 +360,11 @@
      </widget>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Close</set>
      </property>

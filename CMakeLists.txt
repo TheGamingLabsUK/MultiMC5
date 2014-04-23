@@ -282,12 +282,8 @@ SET(MULTIMC_SOURCES
 	gui/dialogs/InstanceSettings.cpp
 	gui/dialogs/IconPickerDialog.h
 	gui/dialogs/IconPickerDialog.cpp
-	gui/dialogs/LegacyModEditDialog.h
-	gui/dialogs/LegacyModEditDialog.cpp
-	gui/dialogs/OneSixModEditDialog.h
-	gui/dialogs/OneSixModEditDialog.cpp
-	gui/dialogs/ModEditDialogCommon.h
-	gui/dialogs/ModEditDialogCommon.cpp
+	gui/dialogs/InstanceEditDialog.h
+	gui/dialogs/InstanceEditDialog.cpp
 	gui/dialogs/EditNotesDialog.h
 	gui/dialogs/EditNotesDialog.cpp
 	gui/dialogs/CustomMessageBox.h
@@ -447,10 +443,6 @@ SET(MULTIMC_SOURCES
 	logic/LiteLoaderInstaller.h
 	logic/LiteLoaderInstaller.cpp
 
-	# Nostalgia
-	logic/NostalgiaInstance.h
-	logic/NostalgiaInstance.cpp
-
 	# FTB
 	logic/OneSixFTBInstance.h
 	logic/OneSixFTBInstance.cpp
@@ -551,8 +543,7 @@ SET(MULTIMC_UIS
 	gui/dialogs/InstanceSettings.ui
 	gui/dialogs/ProgressDialog.ui
 	gui/dialogs/IconPickerDialog.ui
-	gui/dialogs/LegacyModEditDialog.ui
-	gui/dialogs/OneSixModEditDialog.ui
+	gui/dialogs/InstanceEditDialog.ui
 	gui/dialogs/EditNotesDialog.ui
 	gui/dialogs/AccountListDialog.ui
 	gui/dialogs/AccountSelectDialog.ui

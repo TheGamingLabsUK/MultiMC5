@@ -1100,7 +1100,7 @@ void MainWindow::on_actionViewSelectedInstFolder_triggered()
 	}
 }
 
-void MainWindow::on_actionEditInstMods_triggered()
+void MainWindow::on_actionEditInstance_triggered()
 {
 	if (m_selectedInstance)
 	{
@@ -1403,29 +1403,12 @@ void MainWindow::startTask(Task *task)
 	task->start();
 }
 
-// Create A Desktop Shortcut
-void MainWindow::on_actionMakeDesktopShortcut_triggered()
-{
-	QString name("Test");
-	name = QInputDialog::getText(this, tr("MultiMC Shortcut"), tr("Enter a Shortcut Name."),
-								 QLineEdit::Normal, name);
-
-	Util::createShortCut(Util::getDesktopDir(), QApplication::instance()->applicationFilePath(),
-						 QStringList() << "-dl" << QDir::currentPath() << "test", name,
-						 "application-x-octet-stream");
-
-	CustomMessageBox::selectable(
-		this, tr("Not useful"),
-		tr("A Dummy Shortcut was created. it will not do anything productive"),
-		QMessageBox::Warning)->show();
-}
-
 // BrowserDialog
 void MainWindow::openWebPage(QUrl url)
 {
 	QDesktopServices::openUrl(url);
 }
-
+/*
 void MainWindow::on_actionChangeInstMCVersion_triggered()
 {
 	if (view->selectionModel()->selectedIndexes().count() < 1)
@@ -1433,7 +1416,6 @@ void MainWindow::on_actionChangeInstMCVersion_triggered()
 
 	VersionSelectDialog vselect(m_selectedInstance->versionList().get(),
 								tr("Change Minecraft version"), this);
-	vselect.setFilter(1, "OneSix");
 	if (!vselect.exec() || !vselect.selectedVersion())
 		return;
 
@@ -1470,7 +1452,8 @@ void MainWindow::on_actionChangeInstMCVersion_triggered()
 	connect(updateTask.get(), SIGNAL(failed(QString)), SLOT(onGameUpdateError(QString)));
 	tDialog.exec(updateTask.get());
 }
-
+*/
+/*
 void MainWindow::on_actionChangeInstLWJGLVersion_triggered()
 {
 	if (!m_selectedInstance)
@@ -1485,7 +1468,8 @@ void MainWindow::on_actionChangeInstLWJGLVersion_triggered()
             ptr->setLWJGLVersion(lselect.selectedVersion());
 	}
 }
-
+*/
+/*
 void MainWindow::on_actionInstanceSettings_triggered()
 {
 	if (view->selectionModel()->selectedIndexes().count() < 1)
@@ -1495,6 +1479,7 @@ void MainWindow::on_actionInstanceSettings_triggered()
 	settings.setWindowTitle(tr("Instance settings"));
 	settings.exec();
 }
+*/
 
 void MainWindow::instanceChanged(const QModelIndex &current, const QModelIndex &previous)
 {
@@ -1510,12 +1495,8 @@ void MainWindow::instanceChanged(const QModelIndex &current, const QModelIndex &
 	{
 		ui->instanceToolBar->setEnabled(m_selectedInstance->canLaunch());
 		renameButton->setText(m_selectedInstance->name());
-		ui->actionChangeInstLWJGLVersion->setEnabled(
-			m_selectedInstance->menuActionEnabled("actionChangeInstLWJGLVersion"));
-		ui->actionEditInstMods->setEnabled(
-			m_selectedInstance->menuActionEnabled("actionEditInstMods"));
-		ui->actionChangeInstMCVersion->setEnabled(
-			m_selectedInstance->menuActionEnabled("actionChangeInstMCVersion"));
+		ui->actionEditInstance->setEnabled(
+			m_selectedInstance->menuActionEnabled("actionEditInstance"));
 		m_statusLeft->setText(m_selectedInstance->getStatusbarDescription());
 		updateInstanceToolIcon(m_selectedInstance->iconKey());
 

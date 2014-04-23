@@ -26,5 +26,6 @@ public:
 	std::shared_ptr<VersionFinal> version;
 	std::shared_ptr<VersionFinal> vanillaVersion;
 	std::shared_ptr<ModList> loader_mod_list;
+	std::shared_ptr<ModList> core_mod_list;
 	std::shared_ptr<ModList> resource_pack_list;
 };
